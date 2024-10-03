@@ -17,9 +17,9 @@ public class StyleServiceImpl implements StyleService{
     private StyleRepository styleRepository;
 
     @Override
-    public Set<StyleDTO> GetAllStyle() {
+    public Set<StyleDTO> getAllStyle() {
         try{
-            Set<Style> styles = styleRepository.GetAllStyle();
+            Set<Style> styles = styleRepository.getAllStyle();
 
             return styles.stream()
                     .map(StyleMapper::toStyleDTO)

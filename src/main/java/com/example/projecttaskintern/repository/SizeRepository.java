@@ -10,8 +10,8 @@ import java.util.Set;
 
 public interface SizeRepository extends JpaRepository<Size, Long> {
     @Query("select s from Size s join s.products p where p.productId = :productId")
-    Set<Size> GetAllSizeByProductId(@Param("productId") Long productId);
+    Set<Size> getAllSizeByProductId(@Param("productId") Long productId);
 
     @Query("select s from Size s")
-    Set<Size> GetAllSize();
+    Set<Size> getAllSize();
 }

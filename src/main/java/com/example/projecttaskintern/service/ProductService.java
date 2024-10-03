@@ -5,9 +5,9 @@ import com.example.projecttaskintern.dto.ProductDTO;
 import java.util.Set;
 
 public interface ProductService {
-    Set<ProductDTO> GetAllProduct();
+    Set<ProductDTO> getAllProduct();
 
-    Set<ProductDTO> GetAllProductByCategoryId(Long categoryId);
+    Set<ProductDTO> getAllProductByCategoryId(Long categoryId);
 
-    ProductDTO GetProductById(Long productId);
+    ProductDTO getProductById(Long productId);
 }

@@ -5,7 +5,7 @@ import com.example.projecttaskintern.dto.SizeDTO;
 import java.util.Set;
 
 public interface SizeService {
-    Set<SizeDTO> GetAllSizeByProductId(Long productId);
+    Set<SizeDTO> getAllSizeByProductId(Long productId);
 
-    Set<SizeDTO> GetAllSize();
+    Set<SizeDTO> getAllSize();
 }

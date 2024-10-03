@@ -19,7 +19,7 @@ public class ColorController {
     @GetMapping("/all")
     public ResponseEntity<?> GetAllColor(){
         try{
-            return ResponseEntity.status(HttpStatus.OK).body(colorService.GetAllColor());
+            return ResponseEntity.status(HttpStatus.OK).body(colorService.getAllColor());
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }

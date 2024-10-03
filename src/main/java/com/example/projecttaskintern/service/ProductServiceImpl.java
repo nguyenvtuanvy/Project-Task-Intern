@@ -19,9 +19,9 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     @Transactional(readOnly = true)
-    public Set<ProductDTO> GetAllProduct() {
+    public Set<ProductDTO> getAllProduct() {
         try{
-            Set<Product> products = productRepository.GetProductAll();
+            Set<Product> products = productRepository.getProductAll();
 
             return products.stream()
                     .map(ProductMapper::toProductDTO)
@@ -33,9 +33,9 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     @Transactional(readOnly = true)
-    public Set<ProductDTO> GetAllProductByCategoryId(Long categoryId) {
+    public Set<ProductDTO> getAllProductByCategoryId(Long categoryId) {
         try{
-            Set<Product> products = productRepository.GetProductAllByCategoryId(categoryId);
+            Set<Product> products = productRepository.getProductAllByCategoryId(categoryId);
 
             return products.stream()
                     .map(ProductMapper::toProductDTO)
@@ -46,9 +46,9 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public ProductDTO GetProductById(Long productId) {
+    public ProductDTO getProductById(Long productId) {
         try{
-            Product product = productRepository.GetProductById(productId);
+            Product product = productRepository.getProductById(productId);
 
             return ProductMapper.toProductDTO((product));
         } catch (IllegalArgumentException e){

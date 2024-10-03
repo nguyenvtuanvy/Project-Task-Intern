@@ -3,7 +3,7 @@ package com.example.projecttaskintern.controller;
 import com.example.projecttaskintern.dto.ColorDTO;
 import com.example.projecttaskintern.dto.ProductDTO;
 import com.example.projecttaskintern.dto.SizeDTO;
-import com.example.projecttaskintern.response.ProductByCategoryIdToFilter;
+import com.example.projecttaskintern.response.ProductByCategoryIdToFilterResponse;
 import com.example.projecttaskintern.response.ProductByIdResponse;
 import com.example.projecttaskintern.service.ColorService;
 import com.example.projecttaskintern.service.GalleryImageService;
@@ -13,19 +13,15 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/product")
+@RequestMapping("/products")
 public class ProductController {
     @Autowired
     private ProductService productService;
@@ -39,7 +35,7 @@ public class ProductController {
     @GetMapping("/all")
     public ResponseEntity<?> GetAllProduct(){
         try{
-            return ResponseEntity.status(HttpStatus.OK).body(productService.GetAllProduct());
+            return ResponseEntity.status(HttpStatus.OK).body(productService.getAllProduct());
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
@@ -49,27 +45,27 @@ public class ProductController {
     public ResponseEntity<?> GetProductById(@PathVariable("id") Long productId){
         try{
             return ResponseEntity.status(HttpStatus.OK).body(ProductByIdResponse.builder()
-                    .productDTO(productService.GetProductById(productId))
-                    .galleryImageDTOS(galleryImageService.GetAllImageByProductId(productId))
-                    .colorDTOS(colorService.GetAllColorByProductId(productId))
-                    .sizeDTOS(sizeService.GetAllSizeByProductId(productId))
+                    .productDTO(productService.getProductById(productId))
+                    .galleryImageDTOS(galleryImageService.getAllImageByProductId(productId))
+                    .colorDTOS(colorService.getAllColorByProductId(productId))
+                    .sizeDTOS(sizeService.getAllSizeByProductId(productId))
                     .build());
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
     }
 
-    @GetMapping("/category/{id}")
-    public ResponseEntity<?> GetAllProductByCategoryId(@PathVariable("id") Long categoryId){
+    @GetMapping("")
+    public ResponseEntity<?> GetAllProductByCategoryId(@RequestParam("category-id") Long categoryId){
         try{
-            List<ProductByCategoryIdToFilter> products = new ArrayList<>();
+            List<ProductByCategoryIdToFilterResponse> products = new ArrayList<>();
 
-            Set<ProductDTO> productDTOS = productService.GetAllProductByCategoryId(categoryId);
+            Set<ProductDTO> productDTOS = productService.getAllProductByCategoryId(categoryId);
             productDTOS.forEach(productDTO -> {
-                Set<ColorDTO> colorDTOS = colorService.GetAllColorByProductId(productDTO.getProductId());
-                Set<SizeDTO> sizeDTOS = sizeService.GetAllSizeByProductId(productDTO.getProductId());
+                Set<ColorDTO> colorDTOS = colorService.getAllColorByProductId(productDTO.getProductId());
+                Set<SizeDTO> sizeDTOS = sizeService.getAllSizeByProductId(productDTO.getProductId());
 
-                ProductByCategoryIdToFilter product = new ProductByCategoryIdToFilter(productDTO, colorDTOS, sizeDTOS);
+                ProductByCategoryIdToFilterResponse product = new ProductByCategoryIdToFilterResponse(productDTO, colorDTOS, sizeDTOS);
 
                 products.add(product);
             });

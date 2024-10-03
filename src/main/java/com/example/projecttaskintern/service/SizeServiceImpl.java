@@ -16,9 +16,9 @@ public class SizeServiceImpl implements SizeService{
     private SizeRepository sizeRepository;
 
     @Override
-    public Set<SizeDTO> GetAllSizeByProductId(Long productId) {
+    public Set<SizeDTO> getAllSizeByProductId(Long productId) {
         try{
-            Set<Size> sizes = sizeRepository.GetAllSizeByProductId(productId);
+            Set<Size> sizes = sizeRepository.getAllSizeByProductId(productId);
 
             return sizes.stream()
                     .map(SizeMapper::tosizeDTO)
@@ -29,9 +29,9 @@ public class SizeServiceImpl implements SizeService{
     }
 
     @Override
-    public Set<SizeDTO> GetAllSize() {
+    public Set<SizeDTO> getAllSize() {
         try{
-            Set<Size> sizes = sizeRepository.GetAllSize();
+            Set<Size> sizes = sizeRepository.getAllSize();
 
             return sizes.stream()
                     .map(SizeMapper::tosizeDTO)

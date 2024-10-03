@@ -10,11 +10,11 @@ import java.util.Set;
 
 public interface ProductRepository extends JpaRepository<Product, Long> {
     @Query("select p from Product p")
-    Set<Product> GetProductAll();
+    Set<Product> getProductAll();
 
     @Query("select p from Product p where p.productId = :productId")
-    Product GetProductById(@Param("productId") Long productId);
+    Product getProductById(@Param("productId") Long productId);
 
     @Query("select p from Product p where p.category.categoryId = :categoryId")
-    Set<Product> GetProductAllByCategoryId(@Param("categoryId") Long categoryId);
+    Set<Product> getProductAllByCategoryId(@Param("categoryId") Long categoryId);
 }

@@ -20,7 +20,7 @@ public class StyleController {
     @GetMapping("/all")
     public ResponseEntity<?> GetAllStyle(){
         try{
-            return ResponseEntity.status(HttpStatus.OK).body(styleService.GetAllStyle());
+            return ResponseEntity.status(HttpStatus.OK).body(styleService.getAllStyle());
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }

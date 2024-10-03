@@ -19,7 +19,7 @@ public class CategoryController {
     @GetMapping("/all")
     public ResponseEntity<?> GetAllCategory(){
         try{
-            return ResponseEntity.status(HttpStatus.OK).body(categoryService.GetAllCategory());
+            return ResponseEntity.status(HttpStatus.OK).body(categoryService.getAllCategory());
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }

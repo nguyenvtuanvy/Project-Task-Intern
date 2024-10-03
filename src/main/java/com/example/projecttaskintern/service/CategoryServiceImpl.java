@@ -16,9 +16,9 @@ public class CategoryServiceImpl implements CategoryService{
     private CategoryRepository categoryRepository;
 
     @Override
-    public Set<CategoryDTO> GetAllCategory() {
+    public Set<CategoryDTO> getAllCategory() {
         try{
-            Set<Category> categories = categoryRepository.GetAllCategory();
+            Set<Category> categories = categoryRepository.getAllCategory();
 
             return categories.stream()
                     .map(CategoryMapper::toCategoryDTO)

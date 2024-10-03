@@ -7,7 +7,7 @@ import com.example.projecttaskintern.entity.Color;
 import java.util.Set;
 
 public interface ColorService {
-    Set<ColorDTO> GetAllColorByProductId(Long productId);
+    Set<ColorDTO> getAllColorByProductId(Long productId);
 
-    Set<ColorDTO> GetAllColor();
+    Set<ColorDTO> getAllColor();
 }

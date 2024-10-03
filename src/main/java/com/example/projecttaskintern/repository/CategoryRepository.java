@@ -9,5 +9,5 @@ import java.util.Set;
 public interface CategoryRepository extends JpaRepository<Category, Long> {
 
     @Query("select c from Category c")
-    Set<Category> GetAllCategory();
+    Set<Category> getAllCategory();
 }

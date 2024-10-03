@@ -9,5 +9,5 @@ import java.util.Set;
 
 public interface StyleRepository extends JpaRepository<Style, Long> {
     @Query("select st from Style st")
-    Set<Style> GetAllStyle();
+    Set<Style> getAllStyle();
 }

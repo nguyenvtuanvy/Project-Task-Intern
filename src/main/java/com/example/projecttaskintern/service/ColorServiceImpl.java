@@ -18,12 +18,12 @@ public class ColorServiceImpl implements ColorService{
     private ColorRepository colorRepository;
 
     @Override
-    public Set<ColorDTO> GetAllColorByProductId(Long productId) {
+    public Set<ColorDTO> getAllColorByProductId(Long productId) {
         try{
-            Set<Color> colors = colorRepository.GetAllColorByProductId(productId);
+            Set<Color> colors = colorRepository.getAllColorByProductId(productId);
 
             return colors.stream()
-                    .map(ColorMapper::tocolorDTO)
+                    .map(ColorMapper::toColorDTO)
                     .collect(Collectors.toSet());
         } catch (IllegalArgumentException e){
             throw new IllegalArgumentException(e.getMessage());
@@ -31,12 +31,12 @@ public class ColorServiceImpl implements ColorService{
     }
 
     @Override
-    public Set<ColorDTO> GetAllColor() {
+    public Set<ColorDTO> getAllColor() {
         try{
-            Set<Color> colors = colorRepository.GetAllColor();
+            Set<Color> colors = colorRepository.getAllColor();
 
             return colors.stream()
-                    .map(ColorMapper::tocolorDTO)
+                    .map(ColorMapper::toColorDTO)
                     .collect(Collectors.toSet());
         } catch (IllegalArgumentException e){
             throw new IllegalArgumentException(e.getMessage());

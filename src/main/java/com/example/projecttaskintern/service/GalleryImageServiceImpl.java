@@ -19,9 +19,9 @@ public class GalleryImageServiceImpl implements GalleryImageService{
 
 
     @Override
-    public Set<GalleryImageDTO> GetAllImageByProductId(Long productId) {
+    public Set<GalleryImageDTO> getAllImageByProductId(Long productId) {
         try{
-            Set<GalleryImage> galleryImages = galleryImageRepository.GetAllImageByProductId(productId);
+            Set<GalleryImage> galleryImages = galleryImageRepository.getAllImageByProductId(productId);
 
             return galleryImages.stream()
                     .map(GalleryImageMapper::toGalleryImageDTO)

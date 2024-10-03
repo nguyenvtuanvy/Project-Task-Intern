@@ -9,8 +9,8 @@ import java.util.Set;
 
 public interface ColorRepository extends JpaRepository<Color, Long> {
     @Query("select c from Color c join c.products p where p.productId = :productId")
-    Set<Color> GetAllColorByProductId(@Param("productId") Long productId);
+    Set<Color> getAllColorByProductId(@Param("productId") Long productId);
 
     @Query("select c from Color c")
-    Set<Color> GetAllColor();
+    Set<Color> getAllColor();
 }

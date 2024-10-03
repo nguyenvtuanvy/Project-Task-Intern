@@ -9,5 +9,5 @@ import java.util.Set;
 
 public interface GalleryImageRepository extends JpaRepository<GalleryImage, Long> {
     @Query("select gi from GalleryImage gi where gi.product.productId = :productId")
-    Set<GalleryImage> GetAllImageByProductId(@Param("productId") Long productId);
+    Set<GalleryImage> getAllImageByProductId(@Param("productId") Long productId);
 }

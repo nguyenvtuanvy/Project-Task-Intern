@@ -19,7 +19,7 @@ public class SizeController {
     @GetMapping("/all")
     public ResponseEntity<?> GetAllSize(){
         try{
-            return ResponseEntity.status(HttpStatus.OK).body(sizeService.GetAllSize());
+            return ResponseEntity.status(HttpStatus.OK).body(sizeService.getAllSize());
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }

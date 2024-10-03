@@ -5,5 +5,5 @@ import com.example.projecttaskintern.dto.StyleDTO;
 import java.util.Set;
 
 public interface StyleService {
-    Set<StyleDTO> GetAllStyle();
+    Set<StyleDTO> getAllStyle();
 }
